@@ -1,4 +1,4 @@
-import cv2, math, sys
+import cv2, math, sys, easygui
 
 # applies the gaussian functions give the pixel locations & colour values
 def weight(x, y, eye1, eye2, sigma_space, sigma_intensity):
@@ -49,15 +49,15 @@ def joint_bilateral(image, image2, filter_size, sigma_intensity, sigma_space):
 
 
 def main():
-    if len(sys.argv) = 3:
+    if len(sys.argv) == 3:
         img = cv2.imread(sys.argv[1])
         img = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
         img2 = cv2.imread(sys.argv[2])
         img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2LAB)
     else:
-        img = cv2.imread("source/test3a.jpg")
+        img = cv2.imread(easygui.fileopenbox())
         img = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
-        img2 = cv2.imread("source/test3b.jpg")
+        img2 = cv2.imread(easygui.fileopenbox())
         img2 = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
 
     s_i = float(input("sigma intensity: "))
